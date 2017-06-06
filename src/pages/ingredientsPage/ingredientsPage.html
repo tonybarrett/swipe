@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button color='black' ion-button menuToggle='sideMenu'>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Choose your Favorite Ingredients</ion-title>
+  </ion-navbar>
+</ion-header>
+<div id="viewport">
+  <h1>{{category}}</h1>
+  <p>Swipe left if you like the ingredient, right if you don't</p>
+  <p><small>Liked - {{ numLiked }} and not liked - {{ numDisliked }}</small></p>
+  <ul class="stack" swing-stack  [stackConfig]="stackConfig"  #myswing1 (throwout)="onThrowOut($event)">
+    <li swing-card #mycards1 [ngClass]="ingredient.name" [attr.data-name]="ingredient.name" [attr.data-id]="ingredient.id" *ngFor="let ingredient of ingredients">{{ ingredient.name }}</li>
+  </ul>
+</div>
